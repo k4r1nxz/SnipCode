@@ -24,12 +24,8 @@ const SkeletonCard = () => (
 
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
-  
-  
   const [currentPage, setCurrentPage] = useState<PageView>('home');
   const [routeParams, setRouteParams] = useState<RouteParams>({});
-  
-  
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [snippets, setSnippets] = useState<Snippet[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,24 +33,18 @@ const App: React.FC = () => {
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [sortBy, setSortBy] = useState<'latest' | 'popular'>('latest');
   const [editingSnippet, setEditingSnippet] = useState<Snippet | undefined>(undefined);
-
-  
   const [easterEggFound, setEasterEggFound] = useState(false);
   const [repoEasterEgg, setRepoEasterEgg] = useState(false);
 
   useEffect(() => {
-    
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setDarkMode(true);
       document.documentElement.classList.add('dark');
     }
     
     getCurrentUser().then(setCurrentUser);
-    
-    
     loadSnippets();
 
-    
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let cursor = 0;
 
@@ -97,7 +87,6 @@ const App: React.FC = () => {
     loadSnippets();
   }, [sortBy, searchQuery]);
 
-  
   const navigate = (page: PageView, params: RouteParams = {}) => {
     setCurrentPage(page);
     setRouteParams(params);
@@ -112,7 +101,6 @@ const App: React.FC = () => {
     }, 3000);
   };
 
-  
   const handleLoginSuccess = (user: User) => {
     setCurrentUser(user);
     navigate('home');
@@ -151,12 +139,9 @@ const App: React.FC = () => {
       }
   };
 
-  
-
   const renderHome = () => (
     <div className="animate-slide-up">
       <div className="mb-14">
-        {}
         <div className="relative bg-white dark:bg-black border-4 border-black dark:border-white p-8 md:p-12 shadow-hard dark:shadow-hard-dark mb-10 overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-brute-neon rounded-full blur-3xl opacity-20 dark:opacity-10 pointer-events-none group-hover:scale-150 transition-transform duration-700"></div>
             
@@ -183,7 +168,6 @@ const App: React.FC = () => {
             </div>
         </div>
         
-        {}
         <div className="relative group mb-10 z-20">
           <div className="absolute inset-y-0 left-0 pl-0 flex items-center pointer-events-none z-10">
              <div className="h-full bg-black text-white dark:bg-white dark:text-black px-6 flex items-center justify-center border-y-4 border-l-4 border-black dark:border-white">
@@ -199,7 +183,6 @@ const App: React.FC = () => {
           />
         </div>
 
-        {}
         <div className="flex flex-wrap gap-4 mb-8">
             <button 
                 onClick={() => setSortBy('latest')}
@@ -220,7 +203,6 @@ const App: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 min-h-[300px]">
           {isLoading ? (
-              
               <>
                 <SkeletonCard />
                 <SkeletonCard />
@@ -235,7 +217,7 @@ const App: React.FC = () => {
                   }}>
                       <SnippetCard 
                           snippet={snippet} 
-                          onLike={(id) => likeSnippet(snippet.slug)}
+                          onLike={() => likeSnippet(snippet.slug)}
                           onDelete={() => currentUser?.id === snippet.author.id ? handleDelete(snippet.slug) : null}
                       />
                   </div>
@@ -342,7 +324,7 @@ const App: React.FC = () => {
                 </h2>
                 
                 <div className="mb-8 p-1 border-2 border-white bg-white rotate-1 hover:rotate-0 transition-transform duration-300">
-                    <img src="https:
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Karin" alt="Easter Egg Avatar" className="w-full h-auto" />
                 </div>
 
                 <button 
