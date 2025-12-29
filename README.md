@@ -44,7 +44,7 @@ The system uses **Bcrypt** to hash these passwords securely before saving them t
 
 ## 📦 Installation
 
-### **1. Backend (Go)**
+### **1. Backend (Go 1.23)**
 
 ```bash
 go mod tidy
