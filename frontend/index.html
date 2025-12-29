@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnipCode</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              'brute-neon': '#DEFF00',
+              'brute-pink': '#FF0080',
+              'brute-blue': '#00F0FF',
+              'brute-bg': '#F0F0F0',
+              'brute-dark-bg': '#121212',
+              'brute-cyan': '#00F0FF',
+            },
+            boxShadow: {
+              'hard': '6px 6px 0px 0px rgba(0,0,0,1)',
+              'hard-dark': '6px 6px 0px 0px rgba(255,255,255,0.8)',
+              'hard-sm': '3px 3px 0px 0px rgba(0,0,0,1)',
+              'hard-sm-dark': '3px 3px 0px 0px rgba(255,255,255,0.8)',
+              'hard-hover': '2px 2px 0px 0px rgba(0,0,0,1)',
+              'hard-hover-dark': '2px 2px 0px 0px rgba(255,255,255,0.8)',
+            },
+            animation: {
+              'slide-up': 'slideUp 0.3s ease-out forwards',
+            },
+            keyframes: {
+              slideUp: {
+                '0%': { transform: 'translateY(10px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      ::-webkit-scrollbar {
+        width: 14px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f4f4f5;
+      }
+      .dark ::-webkit-scrollbar-track {
+        background: #18181b;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #000;
+        border: 3px solid #f4f4f5;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #3f3f46;
+        border: 3px solid #18181b;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #DEFF00;
+      }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-brute-bg dark:bg-brute-dark-bg text-black dark:text-zinc-100 transition-colors duration-200">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
