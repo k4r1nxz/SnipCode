@@ -18,9 +18,9 @@ func main() {
 	r.RedirectFixedPath = true
 	r.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
-			"https:",
-			"http:",
-			"http:",
+			"",//url frontend
+			"",//url frontend
+			"",//url frontend
 		},
 		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
