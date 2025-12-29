@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Save, X, FileCode, Code2 } from 'lucide-react';
 import { Snippet } from '../types';
@@ -24,7 +23,7 @@ const CreateSnippetForm: React.FC<CreateSnippetFormProps> = ({ onSubmit, onCance
   const [code, setCode] = useState(initialData?.code || '');
   const [language, setLanguage] = useState(initialData?.language || 'javascript');
   const [filename, setFilename] = useState(initialData?.filename || '');
-  const [tags, setTags] = useState(initialData?.tags.join(', ') || '');
+  const [tags, setTags] = useState(initialData?.tags?.join(', ') || '');
   const [touched, setTouched] = useState(false);
 
   const getExtension = (lang: string) => LANGUAGE_MAP[lang as keyof typeof LANGUAGE_MAP] || lang;
@@ -33,7 +32,7 @@ const CreateSnippetForm: React.FC<CreateSnippetFormProps> = ({ onSubmit, onCance
     if (!touched && !initialData) {
         setFilename(`untitled.${getExtension(language)}`);
     }
-  }, [language]);
+  }, [language, touched, initialData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,7 +59,7 @@ const CreateSnippetForm: React.FC<CreateSnippetFormProps> = ({ onSubmit, onCance
                 <p className="text-xs font-mono uppercase tracking-widest text-zinc-500 mt-1">Deploy code to global feed</p>
              </div>
         </div>
-        <button onClick={onCancel} className="p-2 border-2 border-black dark:border-zinc-600 hover:bg-black hover:text-white dark:hover:bg-zinc-100 dark:hover:text-black transition-colors">
+        <button type="button" onClick={onCancel} className="p-2 border-2 border-black dark:border-zinc-600 hover:bg-black hover:text-white dark:hover:bg-zinc-100 dark:hover:text-black transition-colors">
           <X className="w-8 h-8" />
         </button>
       </div>
@@ -140,7 +139,7 @@ const CreateSnippetForm: React.FC<CreateSnippetFormProps> = ({ onSubmit, onCance
                 rows={20}
                 className="w-full p-6 bg-zinc-950 text-zinc-200 border-4 border-black dark:border-zinc-700 focus:outline-none focus:border-brute-neon transition-colors font-mono text-sm leading-relaxed"
                 spellCheck={false}
-                placeholder="
+                placeholder="// PASTE YOUR CODE HERE"
             />
           </div>
         </div>
